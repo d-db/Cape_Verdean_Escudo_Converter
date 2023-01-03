@@ -1,25 +1,18 @@
-# SPICED_Final_Project_Live_Sign_Language_Translator
+# Cape Verdean Escudo - Euro Converter
 
 ## Project Summary
 
-main.py performs a live translation of the German sign language and displays the translated word directly in the window. In the assumed use case, an appointment should be made possible between a deaf and a hearing person. The LSTM neural network is trained to identify 16 different signs of the German sign language. If the user executes the German sign for "stop", a 'speech-to-text' translator will be started. If the user executes the german sign for "end", the programm will end.
+Learning #Python and tired of counting your Cape Verdean #Escudos? Then you might be interested in this little project. 
 
-The project has been realised within two weeks and all training data has been solely produced by the author of this project.
+It is my interpretation of the capstone exercise of [Giles McMullen Python-course on Udemy](https://www.udemy.com/course/the-complete-python-programmer-bootcamp/). The final function takes as arguments the path to a picture of your Escudo-Coins and the current exchange rate EUR – CVE and returns, thanks to image analysis, the amount of the photographed coins in Escudos and Euro.
+
+I decided to program the classification of the coins relative to the size of a 50 Escudos coin, so that photos from different distances could be analyzed (like in the video). Hence, a 50 Escudos coin must always be in the picture and selected by the user.
+
+The algorithm seems to work alright, but it was quite a challenge for me to find a reliable distinction between 50 and 100 escudos that can be understood by a computer, even though they are easily distinguishable to the human eye. You can check out my code here on GitHub and I would very much appreciate suggestions for improvement.
 
 ## Demonstration Video
 
-https://user-images.githubusercontent.com/61935581/209193653-3dc91bb2-fecc-4960-8581-1e963a9e5aaf.mp4
-
-The English translation of the video content and more details:
-
-- Part 1 (in sign language): "Good morning, I need an appointment."
-(This is followed by the German sign for "Stop", which automatically starts a speech-to-text GUI).
-
-- Part 2 (speech-to-text): "Hello, we have something free on Tuesday at 4pm. If that suits you, please tell me your name. Thank you very much."
-(At this point I have shortened the video by about 7 seconds to speed up the process in the video a bit).
-
-- Part 3 (in sign language): "Thank you my name is Daniel"
-(Then follows the German sign for "end", which ends the whole application)
+https://user-images.githubusercontent.com/61935581/210380336-f88f7874-460e-4ffd-adcb-bce202d60d64.mp4
 
 ## Acknowledgement
 
@@ -39,37 +32,6 @@ Afterwards install the libraries specified in requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
-## Usage
-
-The project contains three major files:
-
-### 1. capture.py
-
-The script is used to record new signs. In the standard settings, you go through 200 iterations with 30 frames each (about 1.5 seconds). The gesture is therefore recorded by the user 200 times. The script automatically creates a structure with 200 folders in which the resulting NumPy arrays are stored.
-
-At the beginning after calling the script, a video of the gesture is recorded once so that the user knows later exactly which gesture it was. The video is stored in the same folder structure like the NumPy arrays.
-
-In order to call up the script correctly via the command line, the must also specify the following information:
-
-1. the name of the gesture
-2. the location where the folder structure is to be created
-
-Example command for a recording of the gesture "Morning" stored in the folder "data".
-
-```bash
-python3 capture.py Morgen ./data/
-```
-Sample video of two iterations recording the German sign "Morning" through capture.py:
-
-https://user-images.githubusercontent.com/61935581/209201751-f65e546a-52ee-4ac3-95dd-285ae002ce4f.mp4
-
-### 2. train_model.ipynb
-
-With this Jupyter notebook the LSTM neural network can be trained and validated.
-
-### 3. main.ipynb
-
-This script combines all relevant functions, loads the LSTM neural network and executes the sign language translation as well as the 'speech-to-text' translation like seen in the introductory video above.
 
 ## Contributing
 
